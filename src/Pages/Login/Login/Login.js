@@ -3,12 +3,14 @@ import { Form , Button } from 'react-bootstrap';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
+import SocialLogin from '../SocialLogin/SocialLogin';
 import './Login.css'
 
 const Login = () => {
     const [
         signInWithEmailAndPassword,
         user,
+        error,
       ] = useSignInWithEmailAndPassword(auth);
     const emailRef = useRef('');
     const passwordRef = useRef('');
@@ -20,6 +22,11 @@ const Login = () => {
     if(user){
         navigate(from, { replace: true });
     }
+    let errorElement;
+    if (error) {
+        errorElement = <p className='text-danger'>Error: {error?.message}</p>
+    }
+    
 
     const handleSubmit = event =>{
         event.preventDefault();
@@ -38,25 +45,20 @@ const Login = () => {
             <h1 className='text-primary text-center my-4'>Please Login</h1>
             <Form onSubmit={handleSubmit}> 
                 <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Label>Email address</Form.Label>
                     <Form.Control ref={emailRef} type="email" placeholder="Enter email"  required/>
-                    <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                    </Form.Text>
                 </Form.Group>
 
                 <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Label>Password</Form.Label>
                     <Form.Control ref={passwordRef} type="password" placeholder="Password" required/>
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check type="checkbox" label="Check me out" />
-                </Form.Group>
-                <Button variant="primary" type="submit">
-                    Submit
+                
+                <Button variant="primary" type="submit" className='w-50 d-block mx-auto'>
+                    Login
                 </Button>
             </Form>
+            {errorElement}
             <p className='pt-3'>New to Genious Car <span to='/register' className='text-danger register-text' onClick={navigateRegister}>Please Register</span></p>
+            <SocialLogin></SocialLogin>
         </div>
     );
 };
