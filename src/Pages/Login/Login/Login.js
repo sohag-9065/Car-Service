@@ -8,6 +8,7 @@ import SocialLogin from '../SocialLogin/SocialLogin';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './Login.css'
+import { Helmet } from 'react-helmet';
 
 const Login = () => {
     const [
@@ -60,6 +61,9 @@ const Login = () => {
 
     return (
         <div className='container w-50 mx-auto'>
+            <Helmet>
+                <title>Login</title>
+            </Helmet>
             <h1 className='text-primary text-center my-4'>Please Login</h1>
             <Form onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">

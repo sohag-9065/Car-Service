@@ -6,6 +6,7 @@ import auth from '../../../firebase.init';
 import SocialLogin from '../SocialLogin/SocialLogin';
 import { async } from '@firebase/util';
 import Loading from '../../Shared/Loading/Loading';
+import { Helmet } from 'react-helmet';
 
 const Register = () => {
     const [agree, setAgree] = useState(false);
@@ -55,6 +56,9 @@ const Register = () => {
     }
     return (
         <div className='register-form container w-50 mx-auto'>
+            <Helmet>
+                <title>Register</title>
+            </Helmet>
             <h1 className='text-primary text-center my-4'>Please Register.</h1>
             <form onSubmit={handleSubmit}>
                 <input type="text" ref={nameRef} name="name" id='nameInputFieldId' placeholder='Your Name:' className='w-100 '/>

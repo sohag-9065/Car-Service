@@ -18,14 +18,14 @@ const exparts = [
 
 const Exparts = () => {
     return (
-        <div id='exparts' className='container'>
+        <div id='experts' className='container'>
             <div className="row">
                 <h1 className='text-primary text-center mt-5'>Our Exparts</h1>
                 <div className="row">
                     {
                         exparts.map(expart => <Expart
                             key={expart.id}
-                            expart={expart}
+                            expartEngineer={expart}
                         ></Expart>)
                     }
 

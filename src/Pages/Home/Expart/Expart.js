@@ -1,7 +1,7 @@
 import React from 'react';
 
-const Expart = ({ expart }) => {
-    const { name, image } = expart;
+const Expart = ({ expartEngineer }) => {
+    const { name, image } = expartEngineer;
     return (
         <div className='g-5 col-sm-12 col-md-6 col-lg-4  '>
             <div className="card " >
