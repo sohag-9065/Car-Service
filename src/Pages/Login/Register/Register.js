@@ -67,7 +67,7 @@ const Register = () => {
                 <label className={`ps-2 ${agree ? 'text-primary':'text-danger'}`} htmlFor="terms">Accepts Genious Car terms and condition?</label>
                 <input disabled={!agree} className='w-50 d-block mx-auto  mt-3 btn btn-primary' type="submit" value="Register"  />
             </form>
-            <p className='pt-3 '>New to Genious Car <span to='/register' className='text-primary login-text' onClick={navigateLogin}>Please Login</span></p>
+            <p className='pt-3 '>Already Have a Account? <span to='/register' className='text-primary login-text' onClick={navigateLogin}>Please Login</span></p>
             <SocialLogin></SocialLogin>
         </div>
     );
