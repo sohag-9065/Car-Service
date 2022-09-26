@@ -28,12 +28,13 @@ const Login = () => {
     if (loading || sending) {
         return <Loading></Loading>
     }
-    if (user) {
-        navigate(from, { replace: true });
-    }
+    
     let errorElement;
     if (error) {
         errorElement = <p className='text-danger'>Error: {error?.message}</p>
+    }
+    if (user) {
+        navigate(from, { replace: true });
     }
 
 

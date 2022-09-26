@@ -10,12 +10,16 @@ import Login from './Pages/Login/Login/Login';
 import Register from './Pages/Login/Register/Register';
 import CheckOut from './Pages/CheckOut/CheckOut';
 import RequireAuth from './Pages/Login/RequireAuth/RequireAuth';
+import GooglMaps from './Pages/GooglMaps/GooglMaps';
+import AddService from './Pages/AddService/AddService';
+import ManageServices from './Pages/ManageServices/ManageServices';
 
 function App() {
   return (
     <div >
+      {/* <GooglMaps></GooglMaps> */}
       <Header></Header>
-      <Routes>
+        <Routes>
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/home' element={<Home></Home>}></Route>
         <Route path='/service/:serviceId' element={<ServiceDetail></ServiceDetail>}></Route>
@@ -27,8 +31,18 @@ function App() {
             <CheckOut></CheckOut>
           </RequireAuth>
         }></Route>
+         <Route path='/addservice' element={
+          <RequireAuth>
+            <AddService></AddService>
+          </RequireAuth>
+        }></Route> 
+         <Route path='/manageservices' element={
+          <RequireAuth>
+            <ManageServices></ManageServices>
+          </RequireAuth>
+        }></Route> 
         <Route path='*' element={<NotFound></NotFound>}></Route>
-      </Routes>
+      </Routes> 
       <Footer></Footer>
     </div>
   );
