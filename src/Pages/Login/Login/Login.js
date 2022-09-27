@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import SocialLogin from '../SocialLogin/SocialLogin';
-import { ToastContainer, toast } from 'react-toastify';
+import {  toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './Login.css'
 import { Helmet } from 'react-helmet';
@@ -84,7 +84,7 @@ const Login = () => {
             <p className='pt-3'>New to Genious Car? <span to='/register' className='text-primary register-text' onClick={navigateRegister}>Please Register</span></p>
             <p className=''>Forget Password? <span className='text-primary register-text' onClick={resetPasswod}>Reset Password</span></p>
             <SocialLogin></SocialLogin>
-            <ToastContainer />
+            
         </div>
     );
 };
