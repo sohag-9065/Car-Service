@@ -45,7 +45,7 @@ const Login = () => {
         const password = passwordRef.current.value;
         await signInWithEmailAndPassword(email, password);
         console.log(email, password);
-        const {data} = await axios.post('http://localhost:5000/login', {email});
+        const {data} = await axios.post('https://afternoon-escarpment-23249.herokuapp.com/login', {email});
         localStorage.setItem('accessToken', data.accessToken);
         navigate(from, { replace: true });
         console.log(data);
