@@ -14,7 +14,7 @@ const Order = () => {
     const navigate = useNavigate();
     useEffect(()=> {
         const getOrders = async() => {
-            const email = user.email;
+            const email = user?.email;
             const url = `https://afternoon-escarpment-23249.herokuapp.com/order?email=${email}`;
             try{
                 const {data} = await axios.get(url, {
@@ -39,6 +39,11 @@ const Order = () => {
     return (
         <div>
             <h2>Your Orders: {orders.length}</h2>
+            {
+                orders.map(order => <div key={order._id}>
+                    <p>{order.email} : {order.service}</p>
+                </div>)
+            }
         </div>
     );
 };

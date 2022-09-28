@@ -7,11 +7,13 @@ import SocialLogin from '../SocialLogin/SocialLogin';
 import { async } from '@firebase/util';
 import Loading from '../../Shared/Loading/Loading';
 import { Helmet } from 'react-helmet';
+import useToken from '../../../hooks/useToken';
 
 const Register = () => {
     const [agree, setAgree] = useState(false);
     const [ createUserWithEmailAndPassword, user ,  loading] = useCreateUserWithEmailAndPassword(auth, {sendEmailVerification: true});
     const [updateProfile, updating] = useUpdateProfile(auth);
+    const [token] = useToken(user);
     const nameRef = useRef('');
     const emailRef = useRef('');
     const passwordRef = useRef('');
@@ -20,8 +22,8 @@ const Register = () => {
     if(loading || updating){
         return <Loading></Loading>
     }
-    if(user){
-        console.log("user: ",user)
+    if(token){
+        navigate('/home');
     }
 
     const handleSubmit = async(event) =>{
@@ -38,7 +40,7 @@ const Register = () => {
         await updateProfile({ displayName: name});
           alert('Updated profile');
           console.log('Updated profile');
-          navigate('/home')
+        //   navigate('/home')
     }
     
     // try{
